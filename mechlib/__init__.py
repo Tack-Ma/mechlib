@@ -3,3 +3,8 @@ from .mech import beams_deflection
 from .mech import trq_to_kw
 from .mech import kw_to_trq
 from .hertztouch import Rolls
+from .hertztouch import RollsByLoad
+from .hertztouch import RolltoPlane
+from .hertztouch import RolltoPlaneByLoad
+from .hertztouch import RolltoConcave
+from .hertztouch import RolltoConcaveByLoad
