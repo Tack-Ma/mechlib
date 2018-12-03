@@ -65,7 +65,7 @@ class RolltoPlaneByLoad(RolltoPlane):
 class RolltoConcave(Rolls):
     """docstring for RolltoConcave.Rolls"""
     def __init__(self, r1,r2,q,nu1=0.3,nu2=0.3,e_1=21000,e_2=21000):
-        super().__init__(r1,r2,q,nu1,nu2,e_1,e_2)
+        super().__init__(r1,-1*r2,q,nu1,nu2,e_1,e_2)
 
 class RolltoConcaveByLoad(RolltoConcave):
     """docstring for RolltoConcaveByLoad.RolltoConcave"""
@@ -76,14 +76,20 @@ class RolltoConcaveByLoad(RolltoConcave):
 
 """sample"""
 if __name__ == '__main__':
-    inp = {'r1':1, 'r2':1, 'length':1, 'load':1}
-    hz = RollsByLoad(**inp)
-    press = hz.get_press_max()
-    leng = hz.get_touchwide()
-    press_same = hz.get_press_sameenu()
-    leng_same = hz.get_touchwide_sameenu()
-    print(press,leng,press_same,leng_same)
-    inp2 = {'ro':1, 'length':1, 'load':1}
-    hz_RP = RolltoPlaneByLoad(**inp2)
-    l = [hz._radius_ratio(),hz_RP.get_press_max(), hz_RP.get_touchwide()]
+    inp1 = {'r1':25, 'r2':50, 'length':50, 'load':4000}
+    hz1 = RollsByLoad(**inp1)
+    press1 = hz1.get_press_max()
+    l = [press1,hz1.r1,hz1.r2]
+    print(l)
+
+    inp2 = {'ro':25, 'length':50, 'load':4000}
+    hz2 = RolltoPlaneByLoad(**inp2)
+    press2 = hz2.get_press_max()
+    l = [press2,hz2.r1,hz2.r2]
+    print(l)
+
+    inp3 = {'r1':25, 'r2':50, 'length':50, 'load':4000}
+    hz3 = RolltoConcaveByLoad(**inp3)
+    press3 = hz3.get_press_max()
+    l = [press3,hz3.r1,hz3.r2]
     print(l)
